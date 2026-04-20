@@ -20,14 +20,21 @@ public class EventDelegate
         do
         {
             // Prompt the user for a string
-            Console.WriteLine("Please enter some text or type 'exit' to" +
+            Console.WriteLine("Please enter some text or type 'exit' to " +
                               "end/quit the application.");
             userString = Console.ReadLine();
             // Display the string if it's not exit
-            if (userString.ToUpper().Equals("EXIT"))
+            if (!userString.ToUpper().Equals("EXIT"))
                 eventPub.Value = userString;
         } while (!userString.ToLower().Equals("exit"));
         Console.WriteLine("Goodbye!");
+
+        // class method to handle the event of the user typing in a new string on the console
+        static void UserStringChanged(string newInput)
+        {
+            Console.WriteLine($"The user has typed: \"{newInput}\"\n");
+        }
+
     }
 }
 
